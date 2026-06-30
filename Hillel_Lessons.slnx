@@ -1,1 +1,5 @@
-<Solution />
+<Solution>
+  <Folder Name="/Linq/">
+    <Project Path="LinqUse/LinqUse.csproj" Id="58026498-3913-438a-b5b9-aff1537e8096" />
+  </Folder>
+</Solution>
