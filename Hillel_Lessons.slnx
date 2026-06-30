@@ -1,1 +1,6 @@
-<Solution />
+<Solution>
+  <Folder Name="/Parser_Generator/">
+    <Project Path="E:/Downloads/HW_11-Generator/HW_11-Generator/HW_11/Generator.csproj" />
+    <Project Path="E:/Downloads/HW_11-Generator/HW_11-Generator/Parser/Parser.csproj" />
+  </Folder>
+</Solution>
