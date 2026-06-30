@@ -1,5 +1,5 @@
 <Solution>
-  <Folder Name="/Parser_Generator/">
+  <Folder Name="/ParserGenerator/">
     <Project Path="../Generator/Country/Country.csproj" />
     <Project Path="../Generator/Locations/LocationsLib.csproj" />
     <Project Path="../Generator/Parser/Parser.csproj" />
