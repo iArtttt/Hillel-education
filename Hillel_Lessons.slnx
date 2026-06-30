@@ -1,7 +1,7 @@
 <Solution>
-  <Folder Name="/ParserGenerator/">
-    <Project Path="../Generator/Country/Country.csproj" />
-    <Project Path="../Generator/Locations/LocationsLib.csproj" />
-    <Project Path="../Generator/Parser/Parser.csproj" />
+  <Folder Name="/GeneratorParser/">
+    <Project Path="Generator/Generator.csproj" Id="9cc2a4a0-c656-4ca5-82d1-a79197fe3539" />
+    <Project Path="Locations.LIB/Locations.LIB.csproj" Id="d46caa85-d20e-4056-b53a-9e86bc7e1c20" />
+    <Project Path="Parser/Parser.csproj" Id="7098e84d-a444-4334-a9bc-f4e23eff475b" />
   </Folder>
 </Solution>
