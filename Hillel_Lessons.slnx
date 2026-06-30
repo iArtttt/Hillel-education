@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Parser_Generator/">
-    <Project Path="E:/Downloads/HW_11-Generator/HW_11-Generator/HW_11/Generator.csproj" />
-    <Project Path="E:/Downloads/HW_11-Generator/HW_11-Generator/Parser/Parser.csproj" />
+    <Project Path="../Generator/Country/Country.csproj" />
+    <Project Path="../Generator/Locations/LocationsLib.csproj" />
+    <Project Path="../Generator/Parser/Parser.csproj" />
   </Folder>
 </Solution>
