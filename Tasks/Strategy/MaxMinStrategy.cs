@@ -9,7 +9,7 @@ namespace TreadsTask.Strategy
         protected abstract int Compare(T result, T compare);
         public void ThreadMethod(object? obj)
         {
-            ThreadParam<T, T> param = (ThreadParam<T, T>)obj!;
+            TaskParam<T, T> param = (TaskParam<T, T>)obj!;
             var span = param.Data.Span;
             T result = default;
 
@@ -23,7 +23,7 @@ namespace TreadsTask.Strategy
             param.Result = result;
         }
 
-        public T ThreadResult(ThreadParam<T, T>[] threadParams)
+        public T ThreadResult(TaskParam<T, T>[] threadParams)
         {
             T result = default;
             foreach (var thread in threadParams)

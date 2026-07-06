@@ -8,8 +8,8 @@ namespace TreadsTask
         private readonly IThreadStrategy<T, TResult> _strategy;
         private readonly T[] _array;
         private readonly Stopwatch _timer = new();
-        private ThreadParam<T, TResult>[]? _threadParams;
-        private Thread[] Threads { get; set; }
+        private TaskParam<T, TResult>[]? _taskParams;
+        private Task[] Tasks { get; set; }
         public TResult? Result { get; private set; } = default;
         private readonly CancellationTokenSource _cancellationToken = new CancellationTokenSource();
         public ThreadsUse(int threads, T[] array, IThreadStrategy<T, TResult> strategy)
@@ -19,68 +19,83 @@ namespace TreadsTask
             ArgumentNullException.ThrowIfNull(strategy);
 
             _array = array;
-            Threads = new Thread[threads];
+            Tasks = new Task[threads];
             _strategy = strategy;
         }
 
-        public void ThreadStart()
+        public async Task<TResult?> ThreadStart()
         {
-            CreateThreads();
-            if(_threadParams == null || _strategy == null) return; 
+            
+            _taskParams = new TaskParam<T, TResult>[Tasks.Length];
+
+            if (_taskParams == null || _strategy == null) throw new ArgumentNullException(); 
 
             if (_strategy is IInitParams init)
             {
-                _threadParams = init.Init<T, TResult>(_array.AsMemory(), Threads.Length, _cancellationToken.Token);
+                _taskParams = init.Init<T, TResult>(_array.AsMemory(), Tasks.Length, _cancellationToken.Token);
             }
             else
             {
-                var data = _array.AsMemory();
-                var itemsCount = data.Length / Threads.Length;
-
-                for (var i = 0; i < _threadParams.Length; i++)
-                {
-                    _threadParams[i] = ThreadParam<T, TResult>.Create(data.Slice(i * itemsCount, itemsCount), i, _cancellationToken.Token);
-                }
+                CreateTask();
             }
 
             try
             {
                 _timer.Start();
-                for (int i = 0; i < Threads.Length; i++)
-                    Threads[i].Start(_threadParams[i]);
 
-                new Thread(Interrupt).Start();
+                for (int i = 0; i < Tasks.Length; i++)
+                    Tasks[i].Start();
+                var abortTask = Interrupt();
 
-                for (int i = 0; i < Threads.Length; i++)
-                    Threads[i].Join();
+                await Task.WhenAll(Tasks);
+               
 
-                Result = _strategy.ThreadResult(_threadParams);
+                Result = _strategy.ThreadResult(_taskParams);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"\n{ex.Message}\n");
             }
-            finally { _timer.Stop(); }
+            finally 
+            { 
+                _timer.Stop();
+                _cancellationToken.Dispose();
+            }
+            return Result;
         }
 
-        private void Interrupt(object? obj)
+        private Task Interrupt()
         {
-            var key = Console.ReadKey().Key;
-
-            if (key == ConsoleKey.Escape)
+            return Task.Run(() =>
             {
-                _cancellationToken.Cancel();
-                Console.WriteLine("Is Canseled!");
-            }
+                while (!Tasks.Any(t => t.IsCompleted) && !_cancellationToken.IsCancellationRequested)
+                {
+                    Console.SetCursorPosition(10, 1);
+                    Console.WriteLine("Press 'Escape' to interrupt threads");
+
+                    if (Console.ReadKey(true).Key == ConsoleKey.Escape)
+                    {
+                        _cancellationToken.Cancel();
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"\nTask was canseled\n");
+                        Console.ResetColor();
+                    }
+                }
+            });
         }
 
-        private void CreateThreads()
+        private void CreateTask()
         {
-            for (int i = 0; i < Threads.Length; i++)
+            var data = _array.AsMemory();
+            var itemsCount = data.Length / Tasks.Length;
+
+            for (var i = 0; i < _taskParams.Length; i++)
             {
-                Threads[i] = new Thread(_strategy.ThreadMethod);
+                _taskParams[i] = TaskParam<T, TResult>.Create(data.Slice(i * itemsCount, itemsCount), i, _cancellationToken.Token);
+                Tasks[i] = new Task(() => _strategy.ThreadMethod(_taskParams[i]), _cancellationToken.Token);
             }
-            _threadParams = new ThreadParam<T, TResult>[Threads.Length]; 
+            
         }
         public void Print()
         {

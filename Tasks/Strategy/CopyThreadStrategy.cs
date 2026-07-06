@@ -11,23 +11,23 @@ namespace TreadsTask.Strategy
             Range = new Range(startIndex, lastIndex);
         }
 
-        public ThreadParam<T1, TResult>[] Init<T1, TResult>(Memory<T1> data, int threadCount, CancellationToken token)
+        public TaskParam<T1, TResult>[] Init<T1, TResult>(Memory<T1> data, int threadCount, CancellationToken token)
         {
-            var result = new ThreadParam<T1, TResult>[threadCount];
+            var result = new TaskParam<T1, TResult>[threadCount];
             data = data[Range];
 
             var itemsCount = data.Length / threadCount;
 
             for (int i = 0; i < threadCount; i++)
             {
-                result[i] = ThreadParam<T1, TResult>.Create(data.Slice(i * itemsCount, itemsCount), i, token);
+                result[i] = TaskParam<T1, TResult>.Create(data.Slice(i * itemsCount, itemsCount), i, token);
             }
             return result;
         }
 
         public void ThreadMethod(object? obj)
         {
-            var param = (ThreadParam<T, T[]>)obj!;
+            var param = (TaskParam<T, T[]>)obj!;
             var span = param.Data.Span;
             T[] result = new T[span.Length];
 
@@ -40,6 +40,6 @@ namespace TreadsTask.Strategy
             param.Result = result;
         }
 
-        public T[] ThreadResult(ThreadParam<T, T[]>[] threadParams) => threadParams.SelectMany(s => s.Result!).ToArray();
+        public T[] ThreadResult(TaskParam<T, T[]>[] threadParams) => threadParams.SelectMany(s => s.Result!).ToArray();
     }
 }

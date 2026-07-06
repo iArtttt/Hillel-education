@@ -7,7 +7,7 @@ namespace TreadsTask.Strategy
     {
         public void ThreadMethod(object? obj)
         {
-            var param = (ThreadParam<T, Dictionary<T, int>>)obj!;
+            var param = (TaskParam<T, Dictionary<T, int>>)obj!;
             var span = param.Data.Span;
             Dictionary<T, int> result = new ();
 
@@ -24,7 +24,7 @@ namespace TreadsTask.Strategy
             param.Result = result;
         }
 
-        public Dictionary<T, int> ThreadResult(ThreadParam<T, Dictionary<T, int>>[] threadParams)
+        public Dictionary<T, int> ThreadResult(TaskParam<T, Dictionary<T, int>>[] threadParams)
         {
             Dictionary<T, int> result = new();
             foreach (var thread in threadParams)
