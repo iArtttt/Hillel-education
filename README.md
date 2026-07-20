@@ -9,7 +9,7 @@ This repository contains practical backend modules and assignments developed dur
 
 
 * **[Linq usage](https://github.com/iArtttt/Hillel-education.git)**
-  Complex data filtering, sorting, and transformation pipelines using lambda expressions and LINQ syntax.
+* Complex data filtering, sorting, and transformation pipelines using lambda expressions and LINQ syntax.
   Multi-threaded operations and asynchronous tasks utilizing the `async/await` pattern.
 
 * **[TCP Chat](https://github.com/iArtttt/Hillel-education.git)**
@@ -19,7 +19,7 @@ This repository contains practical backend modules and assignments developed dur
 * **[Tasks](https://github.com/iArtttt/Hillel-education.git)**
 
 * **[Generics & Collections](https://github.com/iArtttt/My_List_And_Linq.git)**
-  Implementation of type-safe generic classes and structures to optimize memory allocation.
+* Implementation of type-safe generic classes and structures to optimize memory allocation.
 
 * **[Total_Comander](https://github.com/iArtttt/Total_Comander.git)**
   
