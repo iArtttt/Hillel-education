@@ -6,14 +6,23 @@ This repository contains practical backend modules and assignments developed dur
 
 ## 📂 Repository Structure (Switch between branches)
 
-* **[HW-5: Generics & Collections](https://github.com)**
-  Implementation of type-safe generic classes and structures to optimize memory allocation.
-  
-* **[HW-6: Advanced LINQ Queries](https://github.com)**
+
+
+* **[Linq usage](https://github.com/iArtttt/Hillel-education.git)**
   Complex data filtering, sorting, and transformation pipelines using lambda expressions and LINQ syntax.
-  
-* **[HW-7: Asynchronous Programming](https://github.com)**
   Multi-threaded operations and asynchronous tasks utilizing the `async/await` pattern.
+
+* **[TCP Chat](https://github.com/iArtttt/Hillel-education.git)**
+
+* **[Parser - Getnerator](https://github.com/iArtttt/Hillel-education.git)**  
+
+* **[Tasks](https://github.com/iArtttt/Hillel-education.git)**
+
+* **[Generics & Collections](https://github.com/iArtttt/My_List_And_Linq.git)**
+  Implementation of type-safe generic classes and structures to optimize memory allocation.
+
+* **[Total_Comander](https://github.com/iArtttt/Total_Comander.git)**
+  
 
 ## 🛠 Tech Stack & Practices
 * **Language & Core:** C# (.NET 8), LINQ, Multithreading
