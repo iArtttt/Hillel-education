@@ -8,16 +8,16 @@ This repository contains practical backend modules and assignments developed dur
 
 
 
-* **[Linq usage](https://github.com/iArtttt/Hillel-education.git)**
+* **[Linq usage](https://github.com/iArtttt/Hillel-education/tree/LinqUsage)**
 
   Complex data filtering, sorting, and transformation pipelines using lambda expressions and LINQ syntax.
   Multi-threaded operations and asynchronous tasks utilizing the `async/await` pattern.
 
-* **[TCP Chat](https://github.com/iArtttt/Hillel-education.git)**
+* **[TCP Chat](https://github.com/iArtttt/Hillel-education/tree/TSP_Chat)**
 
-* **[Parser - Getnerator](https://github.com/iArtttt/Hillel-education.git)**  
+* **[Parser - Getnerator](https://github.com/iArtttt/Hillel-education/tree/Parser_Generator)**  
 
-* **[Tasks](https://github.com/iArtttt/Hillel-education.git)**
+* **[Tasks](https://github.com/iArtttt/Hillel-education/tree/Tasks)**
 
 * **[Generics & Collections](https://github.com/iArtttt/My_List_And_Linq.git)**
 
