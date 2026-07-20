@@ -1,26 +1,21 @@
-# Hillel-education
 # Advanced C# & .NET Educational Projects
 
-This repository contains my practical assignments and backend modules developed during the intensive **C# Pro** course at Hillel IT School. 
+This repository contains practical backend modules and assignments developed during the intensive **C# Pro** course at Hillel IT School. 
 
-The main goal of these projects was to master advanced C# features, write highly optimized code, and apply modern software architecture patterns.
+*Note: Each project is maintained in its own dedicated Git branch.*
 
-## 🛠 Tech Stack & Tools
-* **Language:** C# (.NET 8)
-* **Core Tech:** LINQ, Generics, Async/Await (Multithreading)
-* **Tools & IDE:** Git, GitHub, Visual Studio, JetBrains Rider
+## 📂 Repository Structure (Switch between branches)
 
-## 📂 Repository Structure & Key Features
-
-* **`01-Generics-And-Collections`** (formerly HW-5)
-  Custom implementations of data structures and re-usable generic classes. Focused on ensuring compile-time type safety and preventing boxing/unboxing operations.
+* **[HW-5: Generics & Collections](https://github.com)**
+  Implementation of type-safe generic classes and structures to optimize memory allocation.
   
-* **`02-Advanced-LINQ-Queries`** (formerly HW-6)
-  Complex data filtering, sorting, grouping, and aggregation pipelines using LINQ method syntax and lambda expressions.
+* **[HW-6: Advanced LINQ Queries](https://github.com)**
+  Complex data filtering, sorting, and transformation pipelines using lambda expressions and LINQ syntax.
   
-* **`03-Asynchronous-Programming`** (formerly HW_7)
-  Multi-threaded and asynchronous tasks utilizing `async/await` patterns to build non-blocking, responsive backend logic.
+* **[HW-7: Asynchronous Programming](https://github.com)**
+  Multi-threaded operations and asynchronous tasks utilizing the `async/await` pattern.
 
-## 📐 Architecture Best Practices Applied
-* **SOLID Principles:** Every module is designed with strict adherence to single responsibility and open-closed principles.
-* **Clean Code:** Focused on meaningful naming, proper exception handling (`try-catch-finally`), and decoupled logic.
+## 🛠 Tech Stack & Practices
+* **Language & Core:** C# (.NET 8), LINQ, Multithreading
+* **Principles:** OOP, SOLID, Clean Code architecture
+* **Environment:** Git, GitHub, Visual Studio, JetBrains Rider
